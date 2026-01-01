@@ -1,4 +1,4 @@
-# res://entities/Entity.gd
+# res://res/game/combat/enemies/Entity.gd
 # Classe Base para Entidades (Jogador, Inimigos)
 # Padrão: Component-based (saúde, status, estatísticas)
 
@@ -15,7 +15,9 @@ var stats: Dictionary = {
 	"strength": 0,
 	"defense": 0,
 	"dexterity": 0,
-	"wisdom": 0
+	"wisdom": 0,
+	"endurance": 0,
+	"intelligence": 0
 }
 
 # ============ STATUS CONDITIONS ============
@@ -29,6 +31,7 @@ func _ready() -> void:
 func take_damage(damage: int) -> int:
 	var mitigated_damage = max(1, damage - current_armor)
 	current_health -= mitigated_damage
+	current_armor = 0  # Consumir armadura após mitigar
 	
 	if current_health <= 0:
 		current_health = 0
@@ -46,6 +49,14 @@ func heal(amount: int) -> int:
 
 func on_death() -> void:
 	SignalBus.entity_died.emit(self)
+
+# ============ ARMOR/BLOCK ============
+func add_block(amount: int) -> void:
+	current_armor += amount
+	SignalBus.entity_status_changed.emit(self, "block_gained")
+
+func clear_block() -> void:
+	current_armor = 0
 
 # ============ STATS & BUFFS ============
 func get_stat(stat_name: String) -> int:

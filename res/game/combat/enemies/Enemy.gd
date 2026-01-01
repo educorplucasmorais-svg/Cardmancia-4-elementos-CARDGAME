@@ -1,4 +1,4 @@
-# res://entities/Enemy.gd
+# res://res/game/combat/enemies/Enemy.gd
 # Entidade do Inimigo
 # Herda de Entity, adiciona lógica de IA e padrões de ataque
 

@@ -1,4 +1,4 @@
-# res://game/player/character/PlayerStats.gd
+# res://res/game/player/character/PlayerStats.gd
 # Gerenciador de Estatísticas do Jogador
 # Responsabilidades: Saúde, Mana, Força, Defesa, etc.
 
@@ -15,6 +15,14 @@ var current_mana: int = 3
 var block_this_turn: int = 0 # Armadura temporária
 var strength_modifier: int = 0 # Aumenta dano de cartas
 
+# Stats for element bonuses
+var stats: Dictionary = {
+	"strength": 0,
+	"wisdom": 0,
+	"endurance": 0,
+	"intelligence": 0
+}
+
 func _ready() -> void:
 	current_health = max_health
 	current_mana = max_mana
@@ -23,22 +31,30 @@ func _ready() -> void:
 func refill_mana() -> void:
 	current_mana = max_mana
 	block_this_turn = 0 # Limpar armadura (não persiste entre turnos)
+	SignalBus.mana_changed.emit(current_mana, max_mana)
 
 # Gastar mana ao jogar uma carta
 func spend_mana(amount: int) -> void:
 	current_mana = max(0, current_mana - amount)
+	SignalBus.mana_changed.emit(current_mana, max_mana)
 
 # Verificar se pode pagar o custo de uma carta
 func can_afford_card(card: CardData) -> bool:
-	return current_mana >= card.mana_cost
+	return current_mana >= card.cost
 
 # Adicionar armadura
 func add_block(amount: int) -> void:
 	block_this_turn += amount
+	SignalBus.entity_status_changed.emit(self, "block_gained")
 
 # Adicionar força (modificador de dano)
 func add_strength(amount: int) -> void:
 	strength_modifier += amount
+	stats["strength"] += amount
+
+# Obter stat para cálculos de efeitos
+func get_stat(stat_name: String) -> int:
+	return stats.get(stat_name, 0)
 
 # Receber dano (com mitigação de armadura)
 func take_damage(damage: int) -> int:

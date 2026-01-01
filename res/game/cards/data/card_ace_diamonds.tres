@@ -1,0 +1,30 @@
+# res://res/game/cards/data/card_ace_diamonds.tres
+# Ás de Ouros (Terra) - Bloqueio
+[gd_resource type="Resource" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://res/game/cards/core/CardData.gd" id="1_carddata"]
+[ext_resource type="Script" path="res://res/game/cards/effects/BlockEffect.gd" id="2_blockeffect"]
+[ext_resource type="Resource" path="res://res/game/core/data/elements/Earth.tres" id="3_element"]
+
+[sub_resource type="Resource" id="BlockEffect_1"]
+script = ExtResource("2_blockeffect")
+effect_name = "Escudo de Pedra"
+effect_description = "Ganha bloqueio"
+priority = 0
+amount = 8
+scales_with_endurance = true
+
+[resource]
+script = ExtResource("1_carddata")
+id = "card_ace_diamonds"
+title = "Ás de Ouros"
+element = ExtResource("3_element")
+suit = 3
+value = 1
+rarity = 2
+lore_description = "A carta suprema da Terra. Representa estabilidade, riqueza e proteção. O Ás ergue muralhas intransponíveis."
+cost = 2
+is_playable = true
+target_type = 0
+upgradeable = true
+effects = [SubResource("BlockEffect_1")]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgh1p0xwhawde"]
 
-[ext_resource type="Script" path="res://game/combat/turn_system/BattleManager.gd" id="1_battlemanager"]
-[ext_resource type="Script" path="res://ui/BattleUIManager.gd" id="2_battleuimanager"]
-[ext_resource type="Script" path="res://ui/MockUIController.gd" id="3_mockuicontroller"]
-[ext_resource type="Script" path="res://StartGame.gd" id="4_startgame"]
+[ext_resource type="Script" path="res://res/game/combat/BattleManager.gd" id="1_battlemanager"]
+[ext_resource type="Script" path="res://res/ui/BattleUIManager.gd" id="2_battleuimanager"]
+[ext_resource type="Script" path="res://res/ui/MockUIController.gd" id="3_mockuicontroller"]
+[ext_resource type="Script" path="res://res/StartGame.gd" id="4_startgame"]
 
 [node name="Main" type="Node"]
 script = ExtResource("4_startgame")

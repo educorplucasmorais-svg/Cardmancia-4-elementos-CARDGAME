@@ -1,4 +1,4 @@
-# res://globals/SignalBus.gd
+# res://res/game/core/event_bus/SignalBus.gd
 # Centralizador de Sinais do Jogo
 # Padrão: Event Bus (desacoplamento entre subsistemas)
 
@@ -32,6 +32,7 @@ signal mana_changed(current: int, max_mana: int)
 signal show_enemy_intent(enemy: Node, intent_text: String)
 signal hide_enemy_intent(enemy: Node)
 signal floating_damage(position: Vector2, damage: int)
+signal vfx_requested(vfx_scene: PackedScene, position: Vector2)
 
 # ============ META SIGNALS ============
 signal run_started

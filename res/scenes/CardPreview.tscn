@@ -1,0 +1,306 @@
+# res://res/scenes/CardPreview.tscn
+# Cena de preview das cartas e mecânicas do jogo
+# Mostra exemplos de cada elemento e suas cartas
+
+[gd_scene load_steps=5 format=3 uid="uid://card_preview_scene"]
+
+[ext_resource type="Script" path="res://res/scenes/CardPreviewController.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://res/game/cards/ui/CardView.tscn" id="2_cardview"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.08, 0.08, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.15, 0.15, 0.2, 0.9)
+border_color = Color(0.4, 0.4, 0.5, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_element_fire"]
+bg_color = Color(0.9, 0.3, 0.1, 0.3)
+border_color = Color(0.9, 0.3, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_element_water"]
+bg_color = Color(0.2, 0.5, 0.9, 0.3)
+border_color = Color(0.2, 0.5, 0.9, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_element_earth"]
+bg_color = Color(0.8, 0.7, 0.2, 0.3)
+border_color = Color(0.8, 0.7, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_element_air"]
+bg_color = Color(0.4, 0.8, 0.9, 0.3)
+border_color = Color(0.4, 0.8, 0.9, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CardPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_controller")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+theme_override_constants/separation = 20
+
+[node name="Header" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MainLayout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🎴 CARDMANCIA: OS 4 ELEMENTOS"
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MainLayout"]
+layout_mode = 2
+text = "Preview das Cartas e Mecânicas do Jogo"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainLayout"]
+layout_mode = 2
+
+[node name="ElementsSection" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="FirePanel" type="PanelContainer" parent="MainLayout/ElementsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_element_fire")
+
+[node name="FireContent" type="VBoxContainer" parent="MainLayout/ElementsSection/FirePanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FireTitle" type="Label" parent="MainLayout/ElementsSection/FirePanel/FireContent"]
+layout_mode = 2
+text = "🔥 PAUS (FOGO)"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.3, 0.1, 1)
+horizontal_alignment = 1
+
+[node name="FireDesc" type="Label" parent="MainLayout/ElementsSection/FirePanel/FireContent"]
+layout_mode = 2
+text = "Dano direto aos inimigos
+Força e ação
+Cartas ofensivas"
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FireCardSlot" type="Control" parent="MainLayout/ElementsSection/FirePanel/FireContent"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="WaterPanel" type="PanelContainer" parent="MainLayout/ElementsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_element_water")
+
+[node name="WaterContent" type="VBoxContainer" parent="MainLayout/ElementsSection/WaterPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WaterTitle" type="Label" parent="MainLayout/ElementsSection/WaterPanel/WaterContent"]
+layout_mode = 2
+text = "💧 COPAS (ÁGUA)"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.2, 0.5, 0.9, 1)
+horizontal_alignment = 1
+
+[node name="WaterDesc" type="Label" parent="MainLayout/ElementsSection/WaterPanel/WaterContent"]
+layout_mode = 2
+text = "Cura e regeneração
+Emoção e intuição
+Cartas de suporte"
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="WaterCardSlot" type="Control" parent="MainLayout/ElementsSection/WaterPanel/WaterContent"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="EarthPanel" type="PanelContainer" parent="MainLayout/ElementsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_element_earth")
+
+[node name="EarthContent" type="VBoxContainer" parent="MainLayout/ElementsSection/EarthPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EarthTitle" type="Label" parent="MainLayout/ElementsSection/EarthPanel/EarthContent"]
+layout_mode = 2
+text = "⛰️ OUROS (TERRA)"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.8, 0.7, 0.2, 1)
+horizontal_alignment = 1
+
+[node name="EarthDesc" type="Label" parent="MainLayout/ElementsSection/EarthPanel/EarthContent"]
+layout_mode = 2
+text = "Bloqueio e defesa
+Estabilidade e proteção
+Cartas defensivas"
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="EarthCardSlot" type="Control" parent="MainLayout/ElementsSection/EarthPanel/EarthContent"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AirPanel" type="PanelContainer" parent="MainLayout/ElementsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_element_air")
+
+[node name="AirContent" type="VBoxContainer" parent="MainLayout/ElementsSection/AirPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AirTitle" type="Label" parent="MainLayout/ElementsSection/AirPanel/AirContent"]
+layout_mode = 2
+text = "💨 ESPADAS (AR)"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
+horizontal_alignment = 1
+
+[node name="AirDesc" type="Label" parent="MainLayout/ElementsSection/AirPanel/AirContent"]
+layout_mode = 2
+text = "Compra de cartas
+Intelecto e estratégia
+Cartas de utilidade"
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AirCardSlot" type="Control" parent="MainLayout/ElementsSection/AirPanel/AirContent"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HSeparator2" type="HSeparator" parent="MainLayout"]
+layout_mode = 2
+
+[node name="MechanicsSection" type="PanelContainer" parent="MainLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MechanicsContent" type="VBoxContainer" parent="MainLayout/MechanicsSection"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MechanicsTitle" type="Label" parent="MainLayout/MechanicsSection/MechanicsContent"]
+layout_mode = 2
+text = "⚔️ MECÂNICAS DO JOGO"
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="MechanicsGrid" type="GridContainer" parent="MainLayout/MechanicsSection/MechanicsContent"]
+layout_mode = 2
+columns = 4
+
+[node name="Mech1" type="Label" parent="MainLayout/MechanicsSection/MechanicsContent/MechanicsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🎯 TURNOS
+Jogue cartas gastando mana.
+Termine o turno para o inimigo agir."
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="Mech2" type="Label" parent="MainLayout/MechanicsSection/MechanicsContent/MechanicsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "⚡ MANA
+Cada carta tem um custo.
+Mana regenera a cada turno."
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="Mech3" type="Label" parent="MainLayout/MechanicsSection/MechanicsContent/MechanicsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🛡️ BLOQUEIO
+Protege contra dano.
+Reseta no início do turno."
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="Mech4" type="Label" parent="MainLayout/MechanicsSection/MechanicsContent/MechanicsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🎴 DECK
+Compre 5 cartas por turno.
+Descarte cartas não usadas."
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="Footer" type="Label" parent="MainLayout"]
+layout_mode = 2
+text = "Pressione ESPAÇO para voltar ao menu principal"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1)
+horizontal_alignment = 1

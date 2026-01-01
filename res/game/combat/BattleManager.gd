@@ -61,7 +61,7 @@ func _initialize_entities() -> void:
 	enemies.append(enemy_2)
 	
 	# Inicializar deck de teste (5 cópias do Ás de Espadas)
-	var card_resource = load("res://game/cards/data/card_ace_spades.tres")
+	var card_resource = load("res://res/game/cards/data/card_ace_spades.tres")
 	if card_resource:
 		var test_deck: Array[CardData] = []
 		for i in range(10):

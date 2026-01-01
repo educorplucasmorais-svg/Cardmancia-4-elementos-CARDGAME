@@ -4,10 +4,12 @@
 
 extends Node
 
+const SEPARATOR = "============================================================"
+
 func _ready() -> void:
-	print("\n" + "="*60)
+	print("\n" + SEPARATOR)
 	print("CARDMANCIA - QUICK VALIDATION")
-	print("="*60 + "\n")
+	print(SEPARATOR + "\n")
 	
 	var errors = []
 	var warnings = []
@@ -36,11 +38,11 @@ func _ready() -> void:
 	else:
 		print("✅ Main.tscn estrutura OK")
 	
-	print("\n" + "="*60)
+	print("\n" + SEPARATOR)
 	if errors.is_empty():
 		print("✅ ESTRUTURA VÁLIDA - Pronto para rodar!")
 		print("\n📖 Como executar:")
-		print("  1. Abra: res://scenes/Main.tscn")
+		print("  1. Abra: res://res/scenes/Main.tscn")
 		print("  2. Pressione F5 para play")
 		print("  3. Verifique o console para logs")
 	else:
@@ -53,13 +55,13 @@ func _ready() -> void:
 		for warning in warnings:
 			print("  " + warning)
 	
-	print("="*60 + "\n")
+	print(SEPARATOR + "\n")
 
 func _validate_signalbus() -> bool:
 	return SignalBus != null
 
 func _validate_card_resources() -> bool:
-	var card = load("res://game/cards/data/card_ace_spades.tres")
+	var card = load("res://res/game/cards/data/card_ace_spades.tres")
 	if card == null:
 		return false
 	return card is CardData
@@ -78,5 +80,5 @@ func _validate_classes() -> bool:
 	return true
 
 func _validate_scene() -> bool:
-	var main_scene = load("res://scenes/Main.tscn")
+	var main_scene = load("res://res/scenes/Main.tscn")
 	return main_scene != null

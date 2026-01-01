@@ -4,10 +4,12 @@
 
 extends Node
 
+const SEPARATOR = "======================================================================"
+
 func _ready() -> void:
-	print("\n" + "="*70)
+	print("\n" + SEPARATOR)
 	print("🎮 CARDMANCIA: OS 4 ELEMENTOS - STARTING")
-	print("="*70)
+	print(SEPARATOR)
 	print("\nModo: Mechanical Test (sem design)")
 	print("Status: Auto-play ativado")
 	print("Duração esperada: ~30 segundos\n")

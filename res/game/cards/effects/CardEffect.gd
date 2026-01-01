@@ -24,13 +24,17 @@ func get_tooltip() -> String:
 # ============ EXECUTION ============
 ## O "BattleManager" chamará isso. Targets podem ser Inimigos ou o Player.
 ## Sobrescrever em subclasses para implementar lógica específica
+## Context pode conter: source, hand_manager, battle_manager, etc.
 func execute(targets: Array[Node], context: Dictionary = {}) -> void:
 	push_warning("CardEffect.execute() foi chamado na classe base. Sobrescreva em uma subclasse!")
 
-# Validação pré-execução (retorna false se o efeito não pode ser executado)
-func can_execute(targets: Array[Node], source: Node) -> bool:
+## Validação pré-execução (retorna false se o efeito não pode ser executado)
+## Context pode conter: source, hand_manager, battle_manager, etc.
+func can_execute(targets: Array[Node], context: Dictionary = {}) -> bool:
+	var source = context.get("source", null)
 	return targets.size() > 0 and source != null
 
-# Chamada de retorno pós-execução (para efeitos que precisam de cleanup)
-func on_effect_resolved(targets: Array[Node], source: Node) -> void:
+## Chamada de retorno pós-execução (para efeitos que precisam de cleanup)
+## Context pode conter: source, hand_manager, battle_manager, etc.
+func on_effect_resolved(targets: Array[Node], context: Dictionary = {}) -> void:
 	pass
