@@ -1,4 +1,4 @@
-# res://game/cards/effects/BlockEffect.gd
+# res://res/game/cards/effects/BlockEffect.gd
 # Implementação de Efeito: Bloqueio (Ouros/Terra)
 # Padrão: Command Pattern
 
@@ -16,9 +16,10 @@ func get_tooltip() -> String:
 	return "Ganha %d de bloqueio." % amount
 
 func execute(targets: Array[Node], context: Dictionary = {}) -> void:
-	var source: Node = context.get("source", null)
-	if not can_execute(targets, source):
+	if not can_execute(targets, context):
 		return
+	
+	var source: Node = context.get("source", null)
 	
 	for target in targets:
 		if target.has_method("add_block"):
@@ -32,5 +33,5 @@ func execute(targets: Array[Node], context: Dictionary = {}) -> void:
 			SignalBus.entity_status_changed.emit(target, "block_gained")
 			
 			# VFX opcional
-			if visual_vfx:
-				SignalBus.emit_signal("vfx_requested", visual_vfx, target.global_position)
+			if visual_vfx and target.has_method("get_global_position"):
+				SignalBus.vfx_requested.emit(visual_vfx, target.global_position)

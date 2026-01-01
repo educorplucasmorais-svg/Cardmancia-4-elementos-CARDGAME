@@ -1,4 +1,4 @@
-# res://game/cards/effects/DamageEffect.gd
+# res://res/game/cards/effects/DamageEffect.gd
 # Implementação de Efeito: Dano (Paus/Fogo)
 # Exemplo prático do Command Pattern
 
@@ -16,9 +16,10 @@ func get_tooltip() -> String:
 	return "Causa %d de dano." % amount
 
 func execute(targets: Array[Node], context: Dictionary = {}) -> void:
-	var source: Node = context.get("source", null)
-	if not can_execute(targets, source):
+	if not can_execute(targets, context):
 		return
+	
+	var source: Node = context.get("source", null)
 	
 	for target in targets:
 		# Lembre-se: Use o SignalBus ou verifique componentes.
@@ -34,5 +35,5 @@ func execute(targets: Array[Node], context: Dictionary = {}) -> void:
 			SignalBus.entity_damaged.emit(target, damage)
 			
 			# VFX opcional
-			if visual_vfx:
-				SignalBus.emit_signal("vfx_requested", visual_vfx, target.global_position)
+			if visual_vfx and target.has_method("get_global_position"):
+				SignalBus.vfx_requested.emit(visual_vfx, target.global_position)

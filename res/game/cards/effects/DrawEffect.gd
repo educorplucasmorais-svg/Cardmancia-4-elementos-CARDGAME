@@ -1,4 +1,4 @@
-# res://game/cards/effects/DrawEffect.gd
+# res://res/game/cards/effects/DrawEffect.gd
 # Implementação de Efeito: Comprar Cartas (Espadas/Ar)
 # Padrão: Command Pattern
 
@@ -35,5 +35,5 @@ func execute(targets: Array[Node], context: Dictionary = {}) -> void:
 		hand_manager.draw_cards(draw_amount)
 	
 	# VFX opcional
-	if visual_vfx and source:
-		SignalBus.emit_signal("vfx_requested", visual_vfx, source.global_position)
+	if visual_vfx and source and source.has_method("get_global_position"):
+		SignalBus.vfx_requested.emit(visual_vfx, source.global_position)
