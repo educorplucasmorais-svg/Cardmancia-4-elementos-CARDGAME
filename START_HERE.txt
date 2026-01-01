@@ -1,0 +1,64 @@
+# 🚀 COMO COMEÇAR - 2 OPÇÕES SIMPLES
+
+## ⭐ FORMA MAIS FÁCIL: RUN.bat
+
+```
+Duplo clique em: RUN.bat
+```
+
+✅ Abre HTML (offline, sem servidor)
+✅ Oferece abrir Godot também
+✅ Tudo automático
+
+---
+
+## OPÇÃO 1: Versão Web/HTML (Offline) ⭐⭐⭐
+
+```
+Duplo clique em: index.html
+```
+
+✅ Funciona 100% localmente
+✅ Sem servidor necessário
+✅ Chrome, Firefox, Edge
+✅ Clique em "Simular Batalha"
+
+---
+
+## OPÇÃO 2: Godot Editor (Versão Completa)
+
+```
+Duplo clique em: RUN.bat
+Escolha: S (Sim) para abrir Godot
+```
+
+Ou manualmente:
+1. Abra o Godot 4.x
+2. Abra o projeto: `c:\Users\Pichau\Desktop\Cardmancia Os 4 elementos CARDGAME`
+3. Abra cena: `res/scenes/Main.tscn`
+4. Pressione F5
+
+✅ Versão completa
+✅ Console detalhado
+✅ Pronto para expandir
+
+---
+
+## 📋 O Que Você Vai Ver
+
+### Na Versão Web (index.html):
+- ✅ UI simples e funcional
+- ✅ Simulação de batalha automática
+- ✅ Cartas sendo jogadas
+- ✅ Dano sendo aplicado
+- ✅ Log de eventos em tempo real
+
+### Na Versão Godot:
+- ✅ Sistema completo de combate
+- ✅ Mana/HP em tempo real
+- ✅ Console com logs detalhados
+- ✅ Pronto para expandir com mais features
+
+---
+
+**Qual quer testar primeiro?** 🎮

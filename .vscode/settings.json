@@ -1,0 +1,20 @@
+{
+    "godotTools.editorPath.godot4": "c:\\Users\\Pichau\\Downloads\\Godot_v4.5.1-stable_win64.exe\\Godot_v4.5.1-stable_win64.exe",
+    "godotTools.lsp.serverPort": 6005,
+    "godotTools.debugger.port": 6006,
+    "[gdscript]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "geequlim.godot-tools"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.godot": true,
+        "**/*.import": true
+    },
+    "search.exclude": {
+        "**/.godot": true,
+        "**/builds": true
+    }
+}

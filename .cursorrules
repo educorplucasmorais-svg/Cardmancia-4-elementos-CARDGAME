@@ -1,0 +1,113 @@
+# Cardmancia: Os 4 Elementos - Regras de Desenvolvimento
+
+## Stack Tecnológica
+- **Engine**: Godot 4.x (GDScript)
+- **IDE**: VS Code / Cursor
+- **Controle de Versão**: Git
+
+## Padrões de Código GDScript
+
+### Nomenclatura
+- **Classes**: PascalCase (ex: `CardData`, `BattleManager`)
+- **Variáveis**: snake_case (ex: `current_health`, `max_mana`)
+- **Constantes**: UPPER_SNAKE_CASE (ex: `MAX_HAND_SIZE`, `BASE_DAMAGE`)
+- **Sinais**: snake_case (ex: `card_played`, `enemy_turn_ended`)
+- **Funções Privadas**: Prefixo `_` (ex: `_setup_ui()`, `_validate_target()`)
+
+### Tipagem Forte (Obrigatória)
+```gdscript
+# ✅ CORRETO - Sempre tipar variáveis e retornos
+var health: int = 100
+var cards: Array[CardData] = []
+func deal_damage(target: Node, amount: int) -> void:
+    pass
+
+# ❌ ERRADO - Nunca deixar sem tipo
+var health = 100
+var cards = []
+func deal_damage(target, amount):
+    pass
+```
+
+### Anotações de Exportação
+```gdscript
+# Sempre documentar o propósito de variáveis exportadas
+@export var max_health: int = 100  ## Vida máxima do jogador
+@export var starting_deck: Array[CardData] = []  ## Cartas iniciais
+```
+
+### Organização de Arquivos
+- **Resources (.tres)**: Sempre usar para dados (Cartas, Relíquias, Inimigos)
+- **Scenes (.tscn)**: Para entidades visuais e UI
+- **Scripts (.gd)**: Lógica pura sem dependência de cenas
+
+## Arquitetura do Projeto
+
+### Estrutura Modular (Feature-Based)
+```
+res://game/
+├── core/          # Sistemas globais (Autoloads)
+├── cards/         # Tudo relacionado a cartas
+├── combat/        # Sistema de batalha
+├── map/           # Geração e navegação de mapa
+└── player/        # Personagem e progressão
+```
+
+### Padrões de Projeto Obrigatórios
+
+#### 1. Event Bus (SignalBus)
+- **NUNCA** referenciar diretamente nodes distantes na árvore
+- **SEMPRE** usar sinais do SignalBus para comunicação entre sistemas
+```gdscript
+# ✅ CORRETO
+SignalBus.card_played.emit(card, target)
+
+# ❌ ERRADO
+get_node("/root/Main/BattleManager").process_card(card)
+```
+
+#### 2. Command Pattern para Cartas
+- Cartas não executam lógica diretamente
+- Cartas contêm Arrays de `CardEffect` (Resources)
+- Cada efeito implementa `execute(targets, context)`
+
+#### 3. Máquina de Estados para Turnos
+- Estados devem herdar de `BattleState`
+- Implementar: `enter()`, `exit()`, `update(delta)`
+- Transições apenas via `transition_to(state_name)`
+
+## Regras de Qualidade
+
+### Performance
+- **Evitar** `get_node()` em `_process()` ou `_physics_process()`
+- **Usar** `@onready` para cachear referências
+- **Preferir** `await` em vez de `yield` (Godot 4)
+
+### Segurança de Tipos
+- **Nunca** usar `Variant` quando um tipo específico for possível
+- **Sempre** validar null antes de acessar propriedades
+```gdscript
+if target and target.has_method("take_damage"):
+    target.take_damage(amount)
+```
+
+### Comentários
+- **Doc Comments** (##): Para funções públicas e classes
+- **Inline Comments** (#): Para lógica complexa
+- **Evitar**: Comentários óbvios como `# Incrementa contador`
+
+## Fluxo de Trabalho VS Code
+
+### Depuração
+- **Porta LSP**: 6005 (autocomplete/erros)
+- **Porta DAP**: 6006 (breakpoints)
+- **Sempre** parar o depurador (Shift+F5) antes de fechar o editor
+
+### Antes de Commitar
+1. Rodar validação (F5 na cena de Debug)
+2. Verificar erros no console
+3. Testar build (Build → Build Project)
+
+## Referências Técnicas
+- Documentação Godot 4: https://docs.godotengine.org/en/stable/
+- GDScript Style Guide: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html

@@ -1,0 +1,63 @@
+🎮 CARDMANCIA - OS 4 ELEMENTOS
+
+════════════════════════════════════════════════════════════
+
+✅ ESTRUTURA PRONTA!
+
+════════════════════════════════════════════════════════════
+
+🚀 COMO RODAR (Escolha uma):
+
+───────────────────────────────────────────────────────────
+
+OPÇÃO 1: MAIS FÁCIL (Recomendado)
+─────────────────────────────────
+
+  1. Duplo clique em: RUN.bat
+  
+  ✅ Abre HTML no navegador (offline)
+  ✅ Tudo automático
+  ✅ Sem configurações
+
+───────────────────────────────────────────────────────────
+
+OPÇÃO 2: VERSÃO HTML (Offline)
+──────────────────────────────
+
+  1. Duplo clique em: index.html
+  
+  ✅ Abre no navegador
+  ✅ Clique em "Simular Batalha"
+  ✅ Sem servidor necessário
+
+───────────────────────────────────────────────────────────
+
+OPÇÃO 3: GODOT COMPLETO
+──────────────────────
+
+  1. Duplo clique em: RUN.bat
+  2. Escolha: S (Sim)
+  3. Godot abre automaticamente
+  4. Pressione F5 para rodar
+  
+  ✅ Sistema completo
+  ✅ Console detalhado
+  ✅ Pronto para expandir
+
+───────────────────────────────────────────────────────────
+
+📋 O QUE VOCÊ VAI VER:
+
+  ⚔️  Simulação de batalha
+  💢 Dano sendo aplicado
+  🎴 Cartas sendo jogadas
+  ✅ Vitória declarada
+  📊 Log de eventos em tempo real
+
+═══════════════════════════════════════════════════════════
+
+🎯 COMECE AGORA:
+
+  👉 Duplo clique em RUN.bat
+
+═══════════════════════════════════════════════════════════

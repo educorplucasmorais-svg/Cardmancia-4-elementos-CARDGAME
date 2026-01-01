@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardmancia - Os 4 Elementos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #aaa;
+        }
+        
+        .game-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card h2 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .card p {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        
+        .console {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        
+        .console-line {
+            margin: 5px 0;
+            color: #ffd700;
+        }
+        
+        .console-line.error {
+            color: #ff6b6b;
+        }
+        
+        .console-line.success {
+            color: #51cf66;
+        }
+        
+        .console-line.info {
+            color: #74c0fc;
+        }
+        
+        .game-area {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            grid-column: 1 / -1;
+            min-height: 500px;
+        }
+        
+        .battle-status {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .status-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .status-label {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .status-value {
+            font-size: 2em;
+            color: #fff;
+        }
+        
+        .enemies-section {
+            margin-top: 20px;
+        }
+        
+        .enemy-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .enemy {
+            background: rgba(255, 100, 100, 0.2);
+            border: 2px solid #ff6b6b;
+            border-radius: 5px;
+            padding: 15px;
+            min-width: 120px;
+        }
+        
+        .enemy-name {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .enemy-hp {
+            color: #ddd;
+            font-size: 0.9em;
+        }
+        
+        .hand-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .hand-label {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .cards {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .card-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            padding: 10px;
+            min-width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        .card-name {
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        
+        .card-mana {
+            color: #74c0fc;
+            font-size: 0.7em;
+            margin-top: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .warning {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #ffc107;
+        }
+        
+        .offline-badge {
+            display: inline-block;
+            background: #51cf66;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎴 Cardmancia: Os 4 Elementos</h1>
+            <p class="subtitle">Roguelike Deckbuilder - Teste Mecânico</p>
+        </header>
+        
+        <div class="warning">
+            ✅ <strong>Versão Offline</strong> <span class="offline-badge">SEM SERVIDOR</span><br>
+            Este protótipo HTML funciona 100% localmente. Para versão Godot completa, use <code>RUN.bat</code>
+        </div>
+        
+        <div class="game-section">
+            <!-- Painel Esquerdo -->
+            <div class="card">
+                <h2>📋 Instruções</h2>
+                <p><strong>Status Atual:</strong> Teste Mecânico</p>
+                <p>Este é um protótipo HTML simples para visualizar a estrutura do jogo.</p>
+                
+                <h3 style="color: #74c0fc; margin-top: 15px;">Para rodar a versão completa:</h3>
+                <ol style="margin-left: 15px; margin-top: 10px;">
+                    <li>Duplo clique em <code>START_GODOT.bat</code></li>
+                    <li>Aguarde o Godot abrir</li>
+                    <li>Abra: <code>res/scenes/Main.tscn</code></li>
+                    <li>Pressione <code>F5</code></li>
+                </ol>
+            </div>
+            
+            <!-- Painel Direito -->
+            <div class="card">
+                <h2>🎮 Status do Jogo</h2>
+                <p id="game-status">⏳ Aguardando inicialização...</p>
+                
+                <h3 style="color: #74c0fc; margin-top: 15px;">Estrutura Implementada:</h3>
+                <ul style="margin-left: 15px; margin-top: 10px;">
+                    <li>✅ SignalBus (11 sinais)</li>
+                    <li>✅ CardData + CardEffect</li>
+                    <li>✅ BattleManager FSM</li>
+                    <li>✅ HandManager + PlayerStats</li>
+                    <li>✅ DamageEffect</li>
+                    <li>✅ BattleUIManager</li>
+                </ul>
+                
+                <button class="btn-primary" onclick="startSimulation()" style="margin-top: 20px; width: 100%;">
+                    ▶️ Simular Batalha
+                </button>
+            </div>
+            
+            <!-- Área do Jogo -->
+            <div class="game-area">
+                <h2 style="margin-bottom: 20px;">⚔️ Batalha em Progresso</h2>
+                
+                <div class="battle-status">
+                    <div class="status-box">
+                        <div class="status-label">HP do Jogador</div>
+                        <div class="status-value"><span id="player-hp">100</span>/100</div>
+                    </div>
+                    <div class="status-box">
+                        <div class="status-label">Mana</div>
+                        <div class="status-value"><span id="player-mana">3</span>/3</div>
+                    </div>
+                </div>
+                
+                <div class="enemies-section">
+                    <div style="color: #ffd700; font-weight: bold; margin-bottom: 10px;">Inimigos:</div>
+                    <div class="enemy-list" id="enemies-list">
+                        <div class="enemy">
+                            <div class="enemy-name">Goblin 1</div>
+                            <div class="enemy-hp">HP: <span id="goblin1-hp">30</span>/30</div>
+                        </div>
+                        <div class="enemy">
+                            <div class="enemy-name">Goblin 2</div>
+                            <div class="enemy-hp">HP: <span id="goblin2-hp">30</span>/30</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hand-section">
+                    <div class="hand-label">🎴 Mão (Cartas):</div>
+                    <div class="cards" id="hand-cards">
+                        <!-- Cartas serão adicionadas aqui -->
+                    </div>
+                </div>
+                
+                <div class="console" id="console">
+                    <div class="console-line info">[Sistema] Pronto para iniciar</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>🎮 Cardmancia: Os 4 Elementos - Protótipo HTML</p>
+            <p>Para versão completa do Godot, execute: <code>START_GODOT.bat</code></p>
+        </footer>
+    </div>
+    
+    <script>
+        const console_element = document.getElementById('console');
+        
+        function log(message, type = 'info') {
+            const line = document.createElement('div');
+            line.className = `console-line ${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            console_element.appendChild(line);
+            console_element.scrollTop = console_element.scrollHeight;
+        }
+        
+        function updateUI() {
+            document.getElementById('game-status').textContent = '🎮 Jogo em execução';
+        }
+        
+        async function startSimulation() {
+            log('Iniciando simulação de batalha...', 'info');
+            updateUI();
+            
+            // Inicial do jogador
+            let playerHp = 100;
+            let playerMana = 3;
+            let goblin1Hp = 30;
+            let goblin2Hp = 30;
+            let turn = 1;
+            
+            // Atualizar interface
+            function renderHand() {
+                const handElement = document.getElementById('hand-cards');
+                handElement.innerHTML = '';
+                for (let i = 0; i < playerMana; i++) {
+                    const card = document.createElement('div');
+                    card.className = 'card-item';
+                    card.innerHTML = `
+                        <div class="card-name">Ás de Espadas</div>
+                        <div class="card-mana">Mana: 2</div>
+                    `;
+                    card.onclick = () => playCard(i);
+                    handElement.appendChild(card);
+                }
+            }
+            
+            function playCard(index) {
+                const damage = 8;
+                const target = goblin1Hp > 0 ? 'Goblin 1' : 'Goblin 2';
+                
+                if (target === 'Goblin 1') {
+                    goblin1Hp -= damage;
+                    document.getElementById('goblin1-hp').textContent = Math.max(0, goblin1Hp);
+                } else {
+                    goblin2Hp -= damage;
+                    document.getElementById('goblin2-hp').textContent = Math.max(0, goblin2Hp);
+                }
+                
+                log(`🎴 Jogou carta: Ás de Espadas → ${target}`, 'info');
+                log(`💢 ${target} recebeu ${damage} de dano`, 'success');
+                
+                playerMana -= 2;
+                document.getElementById('player-mana').textContent = playerMana;
+                renderHand();
+            }
+            
+            log('[SetupState] Setup do combate...', 'info');
+            await new Promise(r => setTimeout(r, 500));
+            
+            log('[SetupState] Inimigos: 2 Goblins', 'info');
+            log('[PlayerTurnState] Turno do Jogador iniciado', 'info');
+            await new Promise(r => setTimeout(r, 500));
+            
+            log('[MockUIController] Comprou 5 cartas', 'success');
+            renderHand();
+            await new Promise(r => setTimeout(r, 1000));
+            
+            // Simular turnos
+            while (goblin1Hp > 0 || goblin2Hp > 0) {
+                if (playerHp <= 0) break;
+                
+                log(`\n=== TURNO ${turn} ===`, 'info');
+                
+                // Turno do jogador
+                log('[PlayerTurnState] Turno do jogador', 'info');
+                playerMana = 3;
+                document.getElementById('player-mana').textContent = playerMana;
+                
+                // Jogar 2-3 cartas
+                const cardsToPlay = Math.floor(Math.random() * 2) + 2;
+                for (let i = 0; i < cardsToPlay && playerMana >= 2; i++) {
+                    const damage = 8;
+                    const target = goblin1Hp > 0 ? 'Goblin 1' : 'Goblin 2';
+                    
+                    if (target === 'Goblin 1') {
+                        goblin1Hp -= damage;
+                        document.getElementById('goblin1-hp').textContent = Math.max(0, goblin1Hp);
+                    } else {
+                        goblin2Hp -= damage;
+                        document.getElementById('goblin2-hp').textContent = Math.max(0, goblin2Hp);
+                    }
+                    
+                    log(`🎴 Jogou: Ás de Espadas → ${target}`, 'info');
+                    log(`💢 ${target} recebeu ${damage} de dano`, 'success');
+                    playerMana -= 2;
+                    document.getElementById('player-mana').textContent = playerMana;
+                    
+                    await new Promise(r => setTimeout(r, 800));
+                }
+                
+                // Verificar vitória
+                if (goblin1Hp <= 0 && goblin2Hp <= 0) {
+                    log('\n✅ VITÓRIA! Todos os inimigos foram derrotados!', 'success');
+                    document.getElementById('game-status').textContent = '✅ Vitória!';
+                    break;
+                }
+                
+                // Turno do inimigo
+                log('[EnemyTurnState] Turno dos inimigos', 'info');
+                await new Promise(r => setTimeout(r, 500));
+                
+                const enemyDamage = Math.floor(Math.random() * 5) + 3;
+                playerHp -= enemyDamage;
+                document.getElementById('player-hp').textContent = Math.max(0, playerHp);
+                
+                log(`💢 Você recebeu ${enemyDamage} de dano`, 'error');
+                
+                if (playerHp <= 0) {
+                    log('\n❌ DERROTA! Você foi derrotado.', 'error');
+                    document.getElementById('game-status').textContent = '❌ Derrota!';
+                    break;
+                }
+                
+                turn++;
+                await new Promise(r => setTimeout(r, 1000));
+            }
+        }
+        
+        // Inicializar
+        window.addEventListener('load', () => {
+            log('[Sistema] HTML Prototype carregado', 'success');
+            log('[Sistema] Clique em "Simular Batalha" para começar', 'info');
+        });
+    </script>
+</body>
+</html>

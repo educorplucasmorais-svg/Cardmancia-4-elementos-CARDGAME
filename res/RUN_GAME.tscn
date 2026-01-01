@@ -1,0 +1,16 @@
+# res://RUN_GAME.tscn
+# Cena de teste: Apenas executa o jogo sem debug visual
+# Use isto como main_scene para testes rápidos
+
+[gd_scene load_steps=3 format=3 uid="uid://b34xhj8g81234"]
+
+[ext_resource type="Script" path="res://game/combat/BattleManager.gd" id="1_battlemanager"]
+[ext_resource type="Script" path="res://ui/MockUIController.gd" id="2_mockui"]
+
+[node name="GameRoot" type="Node"]
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("1_battlemanager")
+
+[node name="MockUIController" type="Node" parent="."]
+script = ExtResource("2_mockui")
