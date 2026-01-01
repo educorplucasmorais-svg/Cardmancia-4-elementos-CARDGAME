@@ -2,8 +2,8 @@
 # Ás de Ouros (Terra) - Bloqueio
 [gd_resource type="Resource" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://game/cards/logic/CardData.gd" id="1_carddata"]
-[ext_resource type="Script" path="res://game/cards/logic/BlockEffect.gd" id="2_blockeffect"]
+[ext_resource type="Script" path="res://res/game/cards/core/CardData.gd" id="1_carddata"]
+[ext_resource type="Script" path="res://res/game/cards/effects/BlockEffect.gd" id="2_blockeffect"]
 [ext_resource type="Resource" path="res://res/game/core/data/elements/Earth.tres" id="3_element"]
 
 [sub_resource type="Resource" id="BlockEffect_1"]

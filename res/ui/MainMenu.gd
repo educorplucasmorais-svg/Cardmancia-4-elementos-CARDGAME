@@ -1,4 +1,4 @@
-# res://ui/MainMenu.gd
+# res://res/ui/MainMenu.gd
 # Menu Principal do Jogo
 # Estilo: Pixel Art / Roguelike Deckbuilder
 
@@ -18,12 +18,12 @@ func _ready() -> void:
 func _animate_menu_entrance() -> void:
 	# Fade in suave
 	modulate.a = 0.0
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 0.5)
 
 func _on_new_run_pressed() -> void:
 	print("[MainMenu] Iniciando nova run...")
-	_transition_to_scene("res://scenes/Main.tscn")
+	_transition_to_scene("res://res/scenes/Main.tscn")
 
 func _on_challenges_pressed() -> void:
 	print("[MainMenu] Desafios ainda não implementados")
@@ -39,7 +39,7 @@ func _on_quit_pressed() -> void:
 
 func _transition_to_scene(scene_path: String) -> void:
 	# Fade out antes de trocar cena
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	await tween.finished
 	get_tree().change_scene_to_file(scene_path)
