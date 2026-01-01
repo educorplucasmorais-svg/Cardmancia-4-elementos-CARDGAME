@@ -1,4 +1,4 @@
-# res://game/cards/effects/CardEffect.gd
+# res://res/game/cards/effects/CardEffect.gd
 # Classe Base para Efeitos de Cartas
 # Padrão: Command Pattern (encapsula ações)
 
@@ -31,7 +31,7 @@ func execute(_targets: Array[Node], _context: Dictionary = {}) -> void:
 ## Validação pré-execução (retorna false se o efeito não pode ser executado)
 ## Context pode conter: source, hand_manager, battle_manager, etc.
 func can_execute(targets: Array[Node], context: Dictionary = {}) -> bool:
-	var source = context.get("source", null)
+	var source: Node = context.get("source", null)
 	return targets.size() > 0 and source != null
 
 ## Chamada de retorno pós-execução (para efeitos que precisam de cleanup)

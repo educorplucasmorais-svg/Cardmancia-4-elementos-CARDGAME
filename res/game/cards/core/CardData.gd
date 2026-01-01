@@ -1,4 +1,4 @@
-# res://game/cards/core/CardData.gd
+# res://res/game/cards/core/CardData.gd
 # Definição de Dados da Carta (Resource)
 # Padrão: Scriptable Objects (Data-Driven Design)
 
@@ -46,9 +46,10 @@ func _init(p_id: String = "", p_title: String = "", p_suit: Suit = Suit.SPADES, 
 
 ## Gera descrição dinâmica baseada nos efeitos
 func get_description() -> String:
-	var desc = ""
+	var desc: String = ""
 	for effect in effects:
-		desc += effect.get_tooltip() + "\n"
+		if effect:
+			desc += effect.get_tooltip() + "\n"
 	return desc.strip_edges()
 
 func get_suit_name() -> String:
@@ -65,6 +66,7 @@ func get_theme_color() -> Color:
 
 # Clona a carta (para mão do jogador, não afeta a original)
 func duplicate_instance() -> CardData:
-	var clone = duplicate()
-	clone.upgrade_count = upgrade_count
+	var clone: CardData = duplicate() as CardData
+	if clone:
+		clone.upgrade_count = upgrade_count
 	return clone
