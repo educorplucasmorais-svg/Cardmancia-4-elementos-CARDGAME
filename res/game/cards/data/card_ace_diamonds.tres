@@ -1,5 +1,3 @@
-# res://res/game/cards/data/card_ace_diamonds.tres
-# Ás de Ouros (Terra) - Bloqueio
 [gd_resource type="Resource" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://res/game/cards/core/CardData.gd" id="1_carddata"]
