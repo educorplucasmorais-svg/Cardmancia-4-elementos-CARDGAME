@@ -1,5 +1,8 @@
 {
     "recommendations": [
-        "geequlim.godot-tools"
+        "geequlim.godot-tools",
+        "ms-dotnettools.csharp",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens"
     ]
 }

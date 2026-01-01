@@ -1,0 +1,17 @@
+# res://game/core/data/elements/Fire.tres
+# Elemento: Fogo (Paus) - Dano e Ação
+[gd_resource type="ElementData" format=3]
+
+[ext_resource type="Script" path="res://game/core/data/ElementData.gd" id="1_element"]
+
+[resource]
+script = ExtResource("1_element")
+id = "fire"
+display_name = "Fogo"
+suit_name = "Paus"
+color_theme = Color(0.9, 0.3, 0.1, 1.0)
+secondary_color = Color(0.7, 0.2, 0.0, 1.0)
+description = "O elemento Fogo representa paixão, energia e ação. As cartas de Paus trazem poder destrutivo e iniciativa. Na cartomancia do Zeca, o Fogo é a força primordial - impulsivo, direto e devastador quando liberado."
+gameplay_hint = "Cartas de Paus focam em causar dano direto aos inimigos."
+primary_effect = "damage"
+stat_modifier = "strength"

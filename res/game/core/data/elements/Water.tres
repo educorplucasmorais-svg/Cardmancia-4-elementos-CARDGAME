@@ -1,0 +1,17 @@
+# res://game/core/data/elements/Water.tres
+# Elemento: Água (Copas) - Cura e Regeneração
+[gd_resource type="ElementData" format=3]
+
+[ext_resource type="Script" path="res://game/core/data/ElementData.gd" id="1_element"]
+
+[resource]
+script = ExtResource("1_element")
+id = "water"
+display_name = "Água"
+suit_name = "Copas"
+color_theme = Color(0.2, 0.5, 0.9, 1.0)
+secondary_color = Color(0.1, 0.3, 0.6, 1.0)
+description = "O elemento Água representa emoção, intuição e cura. As cartas de Copas trazem regeneração e proteção espiritual. Na cartomancia do Zeca, a Água flui como os sentimentos - pode ser calma e curativa, ou tempestuosa e avassaladora."
+gameplay_hint = "Cartas de Copas focam em curar vida e remover efeitos negativos."
+primary_effect = "heal"
+stat_modifier = "wisdom"
