@@ -1,10 +1,9 @@
 # res://res/game/cards/data/card_ace_spades.tres
 # Exemplo: Ás de Espadas (Cartomancia - Ar/Espadas = Inteligência, Luta)
-[gd_resource type="Resource" load_steps=4 format=3]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://res/game/cards/core/CardData.gd" id="1_carddata"]
-[ext_resource type="Script" path="res://res/game/cards/effects/DamageEffect.gd" id="2_damageeffect"]
-[ext_resource type="Resource" path="res://res/game/core/data/elements/Air.tres" id="3_element"]
+[ext_resource type="Script" path="res://game/cards/logic/CardData.gd" id="1_carddata"]
+[ext_resource type="Script" path="res://game/cards/logic/DamageEffect.gd" id="2_damageeffect"]
 
 [sub_resource type="Resource" id="DamageEffect_1"]
 script = ExtResource("2_damageeffect")

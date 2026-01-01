@@ -48,7 +48,7 @@ func exit() -> void:
 	SignalBus.player_turn_ended.emit()
 	super.exit()
 
-func handle_input(event: InputEvent) -> void:
+func handle_input(_event: InputEvent) -> void:
 	# Input é processado pela UI (HandManager).
 	# Se a carta for jogada com sucesso, HandManager emite request_play_card.
 	pass
@@ -67,9 +67,11 @@ func _on_play_card_requested(card_data: CardData, target: Node) -> void:
 	if card_data.target_type == CardData.TargetType.ALL_ENEMIES:
 		targets = battle_manager.get_all_enemies()
 	
+	var context = {"source": battle_manager.player, "battle_manager": battle_manager}
+	
 	for effect in card_data.effects:
-		if effect.can_execute(targets, battle_manager.player):
-			effect.execute(targets, battle_manager.player)
+		if effect.can_execute(targets, context):
+			effect.execute(targets, context)
 			SignalBus.card_effect_executed.emit(effect, targets)
 	
 	# 4. Emitir sinal de carta jogada
