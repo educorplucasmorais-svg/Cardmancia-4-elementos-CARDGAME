@@ -63,7 +63,8 @@ func _on_new_run_pressed() -> void:
 	_transition_to_scene("res://res/scenes/Main.tscn")
 
 func _on_challenges_pressed() -> void:
-	print("[MainMenu] Desafios ainda não implementados")
+	print("[MainMenu] Abrindo preview dos Boss Cards...")
+	_transition_to_scene("res://res/scenes/BossCardsPreview.tscn")
 
 func _on_settings_pressed() -> void:
 	print("[MainMenu] Configurações ainda não implementadas")

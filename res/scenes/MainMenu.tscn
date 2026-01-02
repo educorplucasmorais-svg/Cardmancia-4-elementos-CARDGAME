@@ -307,7 +307,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0.8, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
-text = "⚔ CHALLENGES"
+text = "👑 BOSS CARDS"
 
 [node name="CodexButton" type="Button" parent="MenuButtons"]
 custom_minimum_size = Vector2(240, 48)

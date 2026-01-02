@@ -1,0 +1,182 @@
+[gd_scene load_steps=2 format=3 uid="uid://boss_cards_preview"]
+
+[ext_resource type="Script" path="res://res/scenes/BossCardsPreviewController.gd" id="1_controller"]
+
+[node name="BossCardsPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_controller")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.08, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -60.0
+
+[node name="MainContent" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="Header" type="VBoxContainer" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="ScrollContainer/MainContent/Header"]
+layout_mode = 2
+text = "👑 BOSS CARDS PREVIEW 👑"
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="ScrollContainer/MainContent/Header"]
+layout_mode = 2
+text = "52 Cartas + Joker | 4 Naipes | 4 Elementos"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="ScrollContainer/MainContent/Header"]
+layout_mode = 2
+text = "Cada carta é um Boss com 10 fases temáticas. Derrote todos para dominar os 4 Elementos!"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1)
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+
+[node name="FireSection" type="VBoxContainer" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="FireHeader" type="HBoxContainer" parent="ScrollContainer/MainContent/FireSection"]
+layout_mode = 2
+
+[node name="FireIcon" type="Label" parent="ScrollContainer/MainContent/FireSection/FireHeader"]
+layout_mode = 2
+text = "🔥"
+theme_override_font_sizes/font_size = 32
+
+[node name="FireTitle" type="Label" parent="ScrollContainer/MainContent/FireSection/FireHeader"]
+layout_mode = 2
+text = "PAUS (FOGO) - Ação e Energia"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9, 0.3, 0.1, 1)
+
+[node name="FireCards" type="GridContainer" parent="ScrollContainer/MainContent/FireSection"]
+layout_mode = 2
+columns = 13
+
+[node name="WaterSection" type="VBoxContainer" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="WaterHeader" type="HBoxContainer" parent="ScrollContainer/MainContent/WaterSection"]
+layout_mode = 2
+
+[node name="WaterIcon" type="Label" parent="ScrollContainer/MainContent/WaterSection/WaterHeader"]
+layout_mode = 2
+text = "💧"
+theme_override_font_sizes/font_size = 32
+
+[node name="WaterTitle" type="Label" parent="ScrollContainer/MainContent/WaterSection/WaterHeader"]
+layout_mode = 2
+text = "COPAS (ÁGUA) - Emoção e Cura"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.2, 0.5, 0.9, 1)
+
+[node name="WaterCards" type="GridContainer" parent="ScrollContainer/MainContent/WaterSection"]
+layout_mode = 2
+columns = 13
+
+[node name="EarthSection" type="VBoxContainer" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="EarthHeader" type="HBoxContainer" parent="ScrollContainer/MainContent/EarthSection"]
+layout_mode = 2
+
+[node name="EarthIcon" type="Label" parent="ScrollContainer/MainContent/EarthSection/EarthHeader"]
+layout_mode = 2
+text = "⛰️"
+theme_override_font_sizes/font_size = 32
+
+[node name="EarthTitle" type="Label" parent="ScrollContainer/MainContent/EarthSection/EarthHeader"]
+layout_mode = 2
+text = "OUROS (TERRA) - Defesa e Estabilidade"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.8, 0.7, 0.2, 1)
+
+[node name="EarthCards" type="GridContainer" parent="ScrollContainer/MainContent/EarthSection"]
+layout_mode = 2
+columns = 13
+
+[node name="AirSection" type="VBoxContainer" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="AirHeader" type="HBoxContainer" parent="ScrollContainer/MainContent/AirSection"]
+layout_mode = 2
+
+[node name="AirIcon" type="Label" parent="ScrollContainer/MainContent/AirSection/AirHeader"]
+layout_mode = 2
+text = "💨"
+theme_override_font_sizes/font_size = 32
+
+[node name="AirTitle" type="Label" parent="ScrollContainer/MainContent/AirSection/AirHeader"]
+layout_mode = 2
+text = "ESPADAS (AR) - Intelecto e Estratégia"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
+
+[node name="AirCards" type="GridContainer" parent="ScrollContainer/MainContent/AirSection"]
+layout_mode = 2
+columns = 13
+
+[node name="JokerSection" type="VBoxContainer" parent="ScrollContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="JokerHeader" type="HBoxContainer" parent="ScrollContainer/MainContent/JokerSection"]
+layout_mode = 2
+
+[node name="JokerIcon" type="Label" parent="ScrollContainer/MainContent/JokerSection/JokerHeader"]
+layout_mode = 2
+text = "🃏"
+theme_override_font_sizes/font_size = 32
+
+[node name="JokerTitle" type="Label" parent="ScrollContainer/MainContent/JokerSection/JokerHeader"]
+layout_mode = 2
+text = "JOKER - O Coringa do Destino"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9, 0.2, 0.9, 1)
+
+[node name="JokerCards" type="HBoxContainer" parent="ScrollContainer/MainContent/JokerSection"]
+layout_mode = 2
+
+[node name="Footer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+text = "Pressione ESC para voltar ao menu | Clique em uma carta para ver detalhes"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
