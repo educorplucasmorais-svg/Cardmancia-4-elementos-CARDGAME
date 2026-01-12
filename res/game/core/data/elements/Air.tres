@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://res/game/core/data/ElementData.gd" id="1_element"]
+
+[resource]
+script = ExtResource("1_element")
+id = "air"
+display_name = "Ar"
+suit_name = "Espadas"
+color_theme = Color(0.4, 0.8, 0.9, 1.0)
+secondary_color = Color(0.2, 0.6, 0.7, 1.0)
+description = "O elemento Ar representa intelecto, comunicação e velocidade. As cartas de Espadas trazem conhecimento e fluidez. Na cartomancia do Zeca, o Ar é a mente afiada - cortante como uma lâmina, rápido como o vento."
+gameplay_hint = "Cartas de Espadas focam em comprar cartas e manipular o deck."
+primary_effect = "draw"
+stat_modifier = "intelligence"

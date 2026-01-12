@@ -1,47 +1,100 @@
-# res://ui/views/CardView.tscn
-# Visualização de uma carta (genérica)
-# Composta por: Nome, Mana, Descrição, Icon
+[gd_scene load_steps=3 format=3 uid="uid://d2ogg1b5eaavp"]
 
-[gd_scene load_steps=1 format=3 uid="uid://d2ogg1b5eaavp"]
+[ext_resource type="Script" path="res://res/game/cards/ui/CardView.gd" id="1_cardview"]
 
-[node name="CardView" type="PanelContainer"]
-custom_minimum_size = Vector2(150, 200)
-theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.12, 0.12, 0.18, 0.95)
+border_color = Color(0.7, 0.7, 0.8, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
-bg_color = Color(0.2, 0.2, 0.3, 0.9)
-border_color = Color(0.8, 0.8, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cost"]
+bg_color = Color(0.8, 0.6, 0.2, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 142.0
-margin_bottom = 192.0
+[node name="CardView" type="Control"]
+custom_minimum_size = Vector2(180, 260)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_cardview")
 
-[node name="CardTitle" type="Label" parent="VBoxContainer"]
+[node name="CardPanel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="CardPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="CardPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="CardPanel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Card Name"
-custom_minimum_size = Vector2(0, 20)
 theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+clip_text = true
 
-[node name="CardMana" type="Label" parent="VBoxContainer"]
-text = "Mana: 1"
-custom_minimum_size = Vector2(0, 16)
-theme_override_font_sizes/font_size = 12
+[node name="CostPanel" type="PanelContainer" parent="CardPanel/VBox/Header"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cost")
 
-[node name="CardIcon" type="ColorRect" parent="VBoxContainer"]
-color = Color(0.5, 0.5, 0.5, 0.5)
-custom_minimum_size = Vector2(120, 80)
+[node name="CostLabel" type="Label" parent="CardPanel/VBox/Header/CostPanel"]
+layout_mode = 2
+text = "1"
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CardDescription" type="Label" parent="VBoxContainer"]
-text = "Effect description goes here"
+[node name="CardArt" type="TextureRect" parent="CardPanel/VBox"]
+custom_minimum_size = Vector2(160, 120)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ArtPlaceholder" type="ColorRect" parent="CardPanel/VBox/CardArt"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.3, 0.3, 0.4, 0.5)
+
+[node name="DescriptionLabel" type="Label" parent="CardPanel/VBox"]
 custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Card effect description"
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="CardPanel/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="ElementIcon" type="TextureRect" parent="CardPanel/VBox/Footer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ElementLabel" type="Label" parent="CardPanel/VBox/Footer"]
+layout_mode = 2
+text = "Element"
 theme_override_font_sizes/font_size = 10
-autowrap_mode = 1
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)

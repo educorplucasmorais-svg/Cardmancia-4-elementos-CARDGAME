@@ -33,6 +33,21 @@
             "address": "127.0.0.1",
             "launch_game_instance": false,
             "launch_scene": false
+        },
+        {
+            "name": "C#: Launch Game (.NET)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${env:GODOT4}",
+            "args": [
+                "--path",
+                "${workspaceFolder}",
+                "--verbose"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
         }
     ]
 }

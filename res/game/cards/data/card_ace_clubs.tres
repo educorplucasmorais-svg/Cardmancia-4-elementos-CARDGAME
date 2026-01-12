@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" path="res://res/game/cards/core/CardData.gd" id="1_carddata"]
 [ext_resource type="Script" path="res://res/game/cards/effects/DamageEffect.gd" id="2_damageeffect"]
-[ext_resource type="Resource" path="res://res/game/core/data/elements/Air.tres" id="3_element"]
+[ext_resource type="Resource" path="res://res/game/core/data/elements/Fire.tres" id="3_element"]
 
 [sub_resource type="Resource" id="DamageEffect_1"]
 script = ExtResource("2_damageeffect")
-effect_name = "Strike"
-effect_description = "Deal 8 damage"
+effect_name = "Chama Primordial"
+effect_description = "Causa dano de fogo"
 priority = 0
-amount = 8
+amount = 10
 scales_with_strength = true
 
 [resource]
 script = ExtResource("1_carddata")
-id = "card_ace_spades"
-title = "Ás de Espadas"
+id = "card_ace_clubs"
+title = "Ás de Paus"
 element = ExtResource("3_element")
-suit = 0
+suit = 2
 value = 1
 rarity = 2
-lore_description = "A carta suprema do Ar. Representa vitória, poder, verdade. O Ás corta como uma lâmina afiada - direto e sem hesitação."
+lore_description = "A carta suprema do Fogo. Representa ação, paixão e poder. O Ás queima com a intensidade de mil sóis."
 cost = 2
 is_playable = true
 target_type = 1

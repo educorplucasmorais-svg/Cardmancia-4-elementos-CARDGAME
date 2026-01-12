@@ -1,12 +1,4 @@
-# res://ui/views/CardView.tscn
-# Visualização de uma carta (genérica)
-# Composta por: Nome, Mana, Descrição, Icon
-
-[gd_scene load_steps=1 format=3 uid="uid://d2ogg1b5eaavp"]
-
-[node name="CardView" type="PanelContainer"]
-custom_minimum_size = Vector2(150, 200)
-theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+[gd_scene load_steps=2 format=3 uid="uid://d2ogg1b5eaavp_old"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
 bg_color = Color(0.2, 0.2, 0.3, 0.9)
@@ -20,11 +12,11 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[node name="CardView" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 200)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 142.0
-margin_bottom = 192.0
 
 [node name="CardTitle" type="Label" parent="VBoxContainer"]
 text = "Card Name"

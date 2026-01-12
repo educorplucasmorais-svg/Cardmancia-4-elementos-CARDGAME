@@ -1,4 +1,4 @@
-# res://ui/BattleUIManager.gd
+# res://res/ui/BattleUIManager.gd
 # Conecta o SignalBus com a UI
 # Responsabilidades: Atualizar labels, animar dano, mostrar intenções
 
@@ -38,6 +38,9 @@ func _ready() -> void:
 	_add_log("Battle UI ready!")
 
 func _setup_ui() -> void:
+	# Get viewport size
+	var viewport_size = get_viewport().get_visible_rect().size
+	
 	# Mana display (canto superior esquerdo)
 	mana_label.text = "Mana: 0/0"
 	mana_label.position = Vector2(10, 10)
@@ -46,14 +49,14 @@ func _setup_ui() -> void:
 	
 	# Health display (canto superior direito)
 	health_label.text = "HP: 0/0"
-	health_label.position = Vector2(get_viewport_rect().size.x - 200, 10)
+	health_label.position = Vector2(viewport_size.x - 200, 10)
 	health_label.add_theme_font_size_override("font_size", 24)
 	add_child(health_label)
 	
 	# Log output (canto inferior)
 	log_output.text = ""
-	log_output.position = Vector2(10, get_viewport_rect().size.y - 300)
-	log_output.custom_minimum_size = Vector2(get_viewport_rect().size.x - 20, 280)
+	log_output.position = Vector2(10, viewport_size.y - 300)
+	log_output.custom_minimum_size = Vector2(viewport_size.x - 20, 280)
 	log_output.add_theme_font_size_override("font_size", 14)
 	add_child(log_output)
 
@@ -110,7 +113,7 @@ func _on_card_played(card: CardData, targets: Array[Node]) -> void:
 	var target_names = []
 	for target in targets:
 		target_names.append(target.name if target else "Unknown")
-	_add_log("🎴 Card played: %s → %s" % [card.name, ", ".join(target_names)])
+	_add_log("🎴 Card played: %s → %s" % [card.title, ", ".join(target_names)])
 
 func _on_show_enemy_intent(enemy: Node, intent_text: String) -> void:
 	var enemy_name = enemy.name if enemy else "Unknown"

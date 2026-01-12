@@ -1,4 +1,4 @@
-# res://game/combat/fsm/PlayerTurnState.gd
+# res://res/game/combat/fsm/PlayerTurnState.gd
 # Estado: Turno do Jogador
 # Responsabilidades: Recarga de mana, compra de cartas, input handling
 
@@ -28,9 +28,9 @@ func enter() -> void:
 		push_error("[PlayerTurnState] hand_manager is null!")
 		return
 	
-	var draw_count = 5
+	var draw_count: int = 5
 	for i in range(draw_count):
-		var card = battle_manager.player_hand_manager.draw_card()
+		var card: CardData = battle_manager.player_hand_manager.draw_card()
 		if card:
 			SignalBus.hand_card_drawn.emit(card)
 	
@@ -41,14 +41,16 @@ func enter() -> void:
 	SignalBus.player_turn_started.emit()
 	
 	# 5. Conectar ao sinal de "jogar carta" (UI vai emitir isso)
-	SignalBus.request_play_card.connect(_on_play_card_requested)
+	if not SignalBus.request_play_card.is_connected(_on_play_card_requested):
+		SignalBus.request_play_card.connect(_on_play_card_requested)
 
 func exit() -> void:
-	SignalBus.request_play_card.disconnect(_on_play_card_requested)
+	if SignalBus.request_play_card.is_connected(_on_play_card_requested):
+		SignalBus.request_play_card.disconnect(_on_play_card_requested)
 	SignalBus.player_turn_ended.emit()
 	super.exit()
 
-func handle_input(event: InputEvent) -> void:
+func handle_input(_event: InputEvent) -> void:
 	# Input é processado pela UI (HandManager).
 	# Se a carta for jogada com sucesso, HandManager emite request_play_card.
 	pass
@@ -60,16 +62,18 @@ func _on_play_card_requested(card_data: CardData, target: Node) -> void:
 		return
 	
 	# 2. Deduzir mana
-	battle_manager.player_stats.spend_mana(card_data.mana_cost)
+	battle_manager.player_stats.spend_mana(card_data.cost)
 	
 	# 3. Executar efeitos
-	var targets = [target]
+	var targets: Array[Node] = [target]
 	if card_data.target_type == CardData.TargetType.ALL_ENEMIES:
 		targets = battle_manager.get_all_enemies()
 	
+	var context: Dictionary = {"source": battle_manager.player, "battle_manager": battle_manager, "hand_manager": battle_manager.player_hand_manager}
+	
 	for effect in card_data.effects:
-		if effect.can_execute(targets, battle_manager.player):
-			effect.execute(targets, battle_manager.player)
+		if effect and effect.can_execute(targets, context):
+			effect.execute(targets, context)
 			SignalBus.card_effect_executed.emit(effect, targets)
 	
 	# 4. Emitir sinal de carta jogada

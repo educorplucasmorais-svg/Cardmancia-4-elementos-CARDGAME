@@ -13,12 +13,15 @@ res://
 ├── game/                    # LÓGICA DO JOGO
 │   ├── core/                # Sistemas Globais (Autoloads)
 │   │   ├── event_bus/       # SignalBus - Comunicação desacoplada
+│   │   ├── data/            # Tipos globais (ElementData)
+│   │   │   └── elements/    # Resources dos 4 elementos (.tres)
 │   │   ├── save_system/     # (Futuro) SaveManager
 │   │   ├── audio_manager/   # (Futuro) SoundQueue
 │   │   └── game_state/      # (Futuro) GameState singleton
 │   │
 │   ├── cards/               # Módulo de Cartas
-│   │   ├── logic/           # CardData, CardEffect, DamageEffect
+│   │   ├── core/            # CardData (Resource base)
+│   │   ├── effects/         # CardEffect, DamageEffect, HealEffect, etc.
 │   │   ├── data/            # Resources (.tres) de cartas
 │   │   └── ui/              # CardView.tscn, HandContainer
 │   │
@@ -48,6 +51,35 @@ res://
     │   ├── ui/
     │   └── characters/
     └── audio/
+```
+
+---
+
+## 🎴 Sistema de Elementos (Os 4 Naipes)
+
+O jogo utiliza os 4 elementos clássicos do Tarot, cada um associado a um naipe:
+
+| Naipe | Elemento | Cor | Efeito Principal | Stat Modificador |
+|-------|----------|-----|------------------|------------------|
+| **Copas** | Água | Azul | Cura | Wisdom |
+| **Paus** | Fogo | Vermelho | Dano | Strength |
+| **Ouros** | Terra | Amarelo | Bloqueio | Endurance |
+| **Espadas** | Ar | Ciano | Compra | Intelligence |
+
+### ElementData Resource
+**Localização**: `res://game/core/data/ElementData.gd`
+
+Define o contrato de dados para cada elemento, permitindo que a UI mude de cor automaticamente.
+
+### Diagrama de Dependência
+```
+CardData Resource ──────► ElementData Resource
+        │                         │
+        ▼                         ▼
+Array of CardEffects        Visual Assets
+        │                   (Colors/Icons)
+        ▼
+DamageEffect / HealEffect / BlockEffect / DrawEffect
 ```
 
 ---

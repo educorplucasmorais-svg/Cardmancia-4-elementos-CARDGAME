@@ -1,4 +1,4 @@
-# res://entities/Player.gd
+# res://res/game/player/character/Player.gd
 # Entidade do Jogador
 # Herda de Entity, adiciona lógica específica
 

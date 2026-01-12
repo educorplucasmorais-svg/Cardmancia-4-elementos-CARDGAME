@@ -1,0 +1,376 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1k2p8hl6tctv"]
+
+[ext_resource type="Script" path="res://res/ui/MainMenu.gd" id="1_mainmenu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.15, 0.1, 0.08, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9, 0.75, 0.4, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.25, 0.18, 0.12, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1.0, 0.85, 0.5, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_fire"]
+bg_color = Color(0.8, 0.2, 0.1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1.0, 0.6, 0.2, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_water"]
+bg_color = Color(0.1, 0.3, 0.7, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4, 0.7, 1.0, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainmenu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.06, 0.12, 1)
+
+[node name="CardDecorations" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardFire1" type="Panel" parent="CardDecorations"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 140.0
+offset_bottom = 280.0
+rotation = -0.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_fire")
+
+[node name="CardSymbol" type="Label" parent="CardDecorations/CardFire1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.3, 1)
+theme_override_font_sizes/font_size = 48
+text = "♣"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardWater1" type="Panel" parent="CardDecorations"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 300.0
+offset_right = 180.0
+offset_bottom = 460.0
+rotation = -0.15
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_water")
+
+[node name="CardSymbol" type="Label" parent="CardDecorations/CardWater1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 1.0, 1)
+theme_override_font_sizes/font_size = 48
+text = "♥"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardEarth1" type="Panel" parent="CardDecorations"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 100.0
+offset_right = -60.0
+offset_bottom = 260.0
+grow_horizontal = 0
+rotation = 0.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_fire")
+
+[node name="CardSymbol" type="Label" parent="CardDecorations/CardEarth1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 48
+text = "♦"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardAir1" type="Panel" parent="CardDecorations"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 280.0
+offset_right = -100.0
+offset_bottom = 440.0
+grow_horizontal = 0
+rotation = 0.12
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_water")
+
+[node name="CardSymbol" type="Label" parent="CardDecorations/CardAir1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.95, 1.0, 1)
+theme_override_font_sizes/font_size = 48
+text = "♠"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 60.0
+offset_right = 350.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.6, 0.2, 0.1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 64
+text = "✦ CARDMANCIA ✦"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 150.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8, 0.7, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.1, 0.05, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 28
+text = "— Os 4 Elementos —"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ElementIcons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 200.0
+offset_right = 150.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Fire" type="Label" parent="ElementIcons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4, 0.2, 1)
+theme_override_font_sizes/font_size = 32
+text = "♣"
+horizontal_alignment = 1
+
+[node name="Water" type="Label" parent="ElementIcons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "♥"
+horizontal_alignment = 1
+
+[node name="Earth" type="Label" parent="ElementIcons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.75, 0.3, 1)
+theme_override_font_sizes/font_size = 32
+text = "♦"
+horizontal_alignment = 1
+
+[node name="Air" type="Label" parent="ElementIcons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "♠"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 280.0
+offset_right = 120.0
+offset_bottom = 520.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+
+[node name="NewRunButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.8, 0.7, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+text = "► NEW RUN"
+
+[node name="ChallengesButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "👑 BOSS CARDS"
+
+[node name="CodexButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.45, 0.35, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "📖 CODEX"
+disabled = true
+
+[node name="SettingsButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "⚙ SETTINGS"
+
+[node name="QuitButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "✕ QUIT"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.45, 0.35, 1)
+theme_override_font_sizes/font_size = 12
+text = "v0.1.0 - Prototype"
+horizontal_alignment = 2
+
+[node name="CreditsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -40.0
+offset_right = 300.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.4, 0.35, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "Baseado no Baralho do Zeca"
+
+[connection signal="pressed" from="MenuButtons/NewRunButton" to="." method="_on_new_run_pressed"]
+[connection signal="pressed" from="MenuButtons/ChallengesButton" to="." method="_on_challenges_pressed"]
+[connection signal="pressed" from="MenuButtons/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuButtons/QuitButton" to="." method="_on_quit_pressed"]
